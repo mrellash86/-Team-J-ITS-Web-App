@@ -1,0 +1,54 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+  workflow_dispatch:
+
+jobs:
+  deploy-lambda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: backend/lambda_functions/visitor_counter/package-lock.json
+
+      - name: Install dependencies for visitor_counter
+        working-directory: ./backend/lambda_functions/visitor_counter
+        run: |
+          # Uncomment when package.json is created
+          # npm ci
+
+      - name: Run tests
+        working-directory: ./backend/lambda_functions/visitor_counter
+        run: |
+          # Uncomment when tests are added
+          # npm test
+
+      - name: Package Lambda function
+        working-directory: ./backend/lambda_functions/visitor_counter
+        run: |
+          # Create ZIP deployment package
+          zip -r function.zip .
+
+      - name: Deploy to AWS Lambda
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          function_name: visitor_counter
+          zip_file: backend/lambda_functions/visitor_counter/function.zip
