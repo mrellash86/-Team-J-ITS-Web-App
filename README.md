@@ -17,10 +17,10 @@ This repository contains our 4-week capstone project to design and deploy a real
 
 | Role | Responsibility | Team Member |
 |------|----------------|-------------|
-| 🧑‍💼 **Cloud Architect / Team Lead** | Architecture planning, cost tracking, documentation, presentations | [Member Name](GitHub Profile URL) |
-| 🧑‍🎨 **App & Front-End Specialist** | HTML/CSS site, JS visitor counter, GitHub profile links | [Member Name](GitHub Profile URL) |
-| ⚙️ **DevOps & Backend Engineer** | Lambda functions, DynamoDB integration, IaC, CI/CD pipelines | [Member Name](GitHub Profile URL) |
-| 🔐 **Security & Network Engineer** | DNS, SSL/HTTPS, Security Groups, monitoring & alerting | [Member Name](GitHub Profile URL) |
+| 🧑‍💼 **Cloud Architect / Team Lead** | Architecture planning, cost tracking, documentation, presentations |Ell Ash https://github.com/mrellash86 |
+| 🧑‍🎨 **App & Front-End Specialist** | HTML/CSS site, JS visitor counter, GitHub profile links |Ell Ash https://github.com/mrellash86 |
+| ⚙️ **DevOps & Backend Engineer** | Lambda functions, DynamoDB integration, IaC, CI/CD pipelines |Ell Ash https://github.com/mrellash86 |
+| 🔐 **Security & Network Engineer** | DNS, SSL/HTTPS, Security Groups, monitoring & alerting |Ell Ash https://github.com/mrellash86 |
 
 ## 🏗️ Architecture
 
