@@ -1,33 +1,128 @@
-# Team J IT Services App
+# Team J IT Services Web Application
 
-This repository contains the IT Services application developed by Team J.
+## 🎯 Project Overview
 
-## Project Structure
+This repository contains our 4-week capstone project to design and deploy a real-world cloud-based web application for an IT services business. Our application showcases cloud architecture best practices, serverless backends, infrastructure-as-code, and CI/CD automation.
 
-- `frontend/`: Contains the web application frontend code
-  - `css/`: Stylesheets
-  - `js/`: JavaScript files
-  - `index.html`: Main entry point for the web application
+### Core Components
 
-- `backend/`: Contains the serverless backend code
-  - `lambda_functions/`: AWS Lambda functions
-    - `visitor_counter/`: Function to count website visitors
-  - `api_gateway/`: API Gateway configurations
+- 🌐 **Static Website Hosting** - HTML/CSS/JS resume site hosted on S3
+- 🔢 **Visitor Counter** - Interactive counter using DynamoDB and Lambda functions
+- 🔧 **Infrastructure-as-Code** - AWS resources managed through Terraform/CloudFormation
+- 🚀 **CI/CD Pipeline** - Automated deployments using GitHub Actions
+- 🔒 **Security & Networking** - DNS, HTTPS, Security Groups, and monitoring
+- 👥 **Team Info Page** - Information about our team members with GitHub profile links
 
-- `infrastructure/`: Infrastructure as Code (IaC) files
-  - `terraform/`: Terraform configuration files
-  - `cloudformation/`: AWS CloudFormation templates
+## 👥 Team Roles
 
-- `docs/`: Project documentation
-  - `architecture/`: Architecture diagrams and documentation
+| Role | Responsibility | Team Member |
+|------|----------------|-------------|
+| 🧑‍💼 **Cloud Architect / Team Lead** | Architecture planning, cost tracking, documentation, presentations | [Member Name](GitHub Profile URL) |
+| 🧑‍🎨 **App & Front-End Specialist** | HTML/CSS site, JS visitor counter, GitHub profile links | [Member Name](GitHub Profile URL) |
+| ⚙️ **DevOps & Backend Engineer** | Lambda functions, DynamoDB integration, IaC, CI/CD pipelines | [Member Name](GitHub Profile URL) |
+| 🔐 **Security & Network Engineer** | DNS, SSL/HTTPS, Security Groups, monitoring & alerting | [Member Name](GitHub Profile URL) |
 
-- `.github/`: GitHub specific files
-  - `workflows/`: GitHub Actions workflows
+## 🏗️ Architecture
 
-## Getting Started
+Our application uses AWS services to create a scalable, secure, and cost-effective solution:
 
-Instructions for setting up the project locally will be added here.
+```
+                            ┌─────────────┐
+                            │   Route 53  │
+                            │    (DNS)    │
+                            └──────┬──────┘
+                                   │
+                                   ▼
+┌─────────────┐            ┌─────────────┐
+│ GitHub      │            │ CloudFront  │
+│ Actions     ├─────────►  │   (CDN)     │◄────┐
+│ (CI/CD)     │            │ + SSL/TLS   │     │
+└─────────────┘            └──────┬──────┘     │
+      │                           │            │
+      │                           ▼            │
+      │                    ┌─────────────┐     │
+      └──────────────────►│  S3 Bucket   │     │
+      │                   │(Static Site) │     │
+      │                   └─────────────┘     │
+      │                                       │
+      │                    ┌─────────────┐    │
+      └──────────────────►│ API Gateway  ├────┘
+      │                   └──────┬──────┘
+      │                          │
+      │                          ▼
+      │                   ┌─────────────┐
+      └──────────────────►│   Lambda    │
+                          │ Functions   │
+                          └──────┬──────┘
+                                 │
+                                 ▼
+                          ┌─────────────┐
+                          │  DynamoDB   │
+                          │ (Database)  │
+                          └─────────────┘
+```
 
-## License
+## 🔧 Backend Services
 
-This project is licensed under the terms of the license included in this repository.
+### AWS Lambda Functions
+- **Visitor Counter Function**: Tracks and updates page views
+- **Contact Form Processor**: Handles form submissions
+- **Content API**: Serves dynamic content
+
+### DynamoDB Tables
+- **visitors-table**: Stores visitor count data
+- **contact-submissions**: Stores form submissions 
+- **content-table**: Stores dynamic content for the site
+
+## 📅 Project Timeline
+
+| Week | Focus | Deliverables |
+|------|-------|--------------|
+| 1️⃣ | Resume Site (HTML/CSS), IAM setup, Static Hosting | Live site (GitHub Pages), architecture diagram |
+| 2️⃣ | Visitor Counter, DNS setup, HTTPS, Basic Logging | Working visitor counter, DNS + HTTPS live demo |
+| 3️⃣ | Backend API (Python), DynamoDB, IaC Templates | API test results, IaC deployment demo |
+| 4️⃣ | CI/CD Pipelines, GitHub integration, Team Info Page | Final site with GitHub profiles, live demo |
+
+## 🛠️ Setup & Deployment
+
+### Prerequisites
+- AWS Account with appropriate permissions
+- AWS CLI configured
+- Terraform or AWS CloudFormation installed
+- Node.js and npm (for frontend development)
+- Python 3.9+ (for Lambda functions)
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/mrellash86/-Team-J-ITS-Web-App.git
+cd team-j-it-services-app
+
+# Set up frontend
+cd frontend
+npm install
+npm start
+
+# Deploy infrastructure
+cd ../infrastructure/terraform
+terraform init
+terraform plan
+terraform apply
+```
+
+## 📊 Monitoring & Logging
+
+- AWS CloudWatch for Lambda function logs
+- CloudWatch Metrics for application performance
+- CloudWatch Alarms for error rate monitoring
+- Budget alerts for cost management
+
+## 🔗 Useful Links
+
+- [Live Application](#) (Coming soon)
+- [Project Documentation](#) (Coming soon)
+- [Team Blog Post](#) (Coming soon)
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
